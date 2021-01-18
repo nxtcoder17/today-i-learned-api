@@ -61,9 +61,13 @@ module.exports = (env = {}) => {
 
     plugins: [
       new NodemonPlugin(),
-      new DotEnv({
-        path: isProduction ? './env/production.env' : './env/development.env',
-      }),
+      ...(!isProduction
+        ? [
+            new DotEnv({
+              path: './env/development.env',
+            }),
+          ]
+        : []),
       new webpack.ContextReplacementPlugin(
         /(express\/lib|any-promise|fastest-validator|typeorm|app-root-path)/,
         'node_modules'

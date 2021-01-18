@@ -7,12 +7,12 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon dist/index.js",
+    "start": "node dist/index.js",
     "predev": "npm run clean",
     "dev": "nodemon --inspect -r dotenv/config -r esm index.dev.js dotenv_config_path='./env/development.env' ",
     "dev:webpack": "webpack --watch --color --progress",
     "prebuild": "npm run clean",
-    "build": "webpack --env production --color --progress",
+    "build": "webpack --env isProduction --color --progress",
     "clean": "rimraf ./dist"
   },
   "keywords": [],
