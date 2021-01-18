@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const NodemonPlugin = require('nodemon-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const DotEnv = require('dotenv-webpack');
+require('babel-polyfill');
 
 module.exports = (env = {}) => {
   const isProduction = 'isProduction' in env || false;
