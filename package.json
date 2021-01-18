@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "nodemon dist/index.js",
+    "start": "npx nodemon dist/index.js",
     "predev": "npm run clean",
     "dev": "nodemon --inspect -r dotenv/config -r esm index.dev.js dotenv_config_path='./env/development.env' ",
     "dev:webpack": "webpack --watch --color --progress",
