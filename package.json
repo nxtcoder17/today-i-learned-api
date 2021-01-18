@@ -26,7 +26,6 @@
     "@types/node": "^14.14.21",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "babel-polyfill": "^6.26.0",
     "better-module-alias": "^1.1.0",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^6.0.0",
@@ -53,6 +52,7 @@
     "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "axios": "^0.21.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
