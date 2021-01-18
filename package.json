@@ -2,9 +2,12 @@
   "name": "today-i-learned-api",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "15.x"
+  },
   "main": "index.js",
   "scripts": {
-    "start": "npm run dev",
+    "start": "nodemon dist/index.js",
     "predev": "npm run clean",
     "dev": "nodemon --inspect -r dotenv/config -r esm index.dev.js dotenv_config_path='./env/development.env' ",
     "dev:webpack": "webpack --watch --color --progress",
