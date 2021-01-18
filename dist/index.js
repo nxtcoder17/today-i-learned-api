@@ -9,10 +9,7 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var babel_polyfill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-polyfill */ "babel-polyfill");
-/* harmony import */ var babel_polyfill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_polyfill__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _src__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src */ "./src/index.js");
-
+/* harmony import */ var _src__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src */ "./src/index.js");
 
 
 /***/ }),
@@ -1164,8 +1161,9 @@ module.exports = require("pino");;
 /************************************************************************/
 /******/ 	// startup
 /******/ 	// Load entry module
+/******/ 	__webpack_require__("babel-polyfill");
+/******/ 	// This entry module used 'module' so it can't be inlined
 /******/ 	__webpack_require__("./index.js");
-/******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map

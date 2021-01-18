@@ -27,7 +27,7 @@ module.exports = (env = {}) => {
 
   return {
     target: 'node',
-    entry: './index.js',
+    entry: ['babel-polyfill', './index.js'],
     ...(isProduction ? productionOnly : developmentOnly),
 
     output: {
