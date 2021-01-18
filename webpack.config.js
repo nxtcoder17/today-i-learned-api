@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const NodemonPlugin = require('nodemon-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
-const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 const DotEnv = require('dotenv-webpack');
 
 module.exports = (env = {}) => {
@@ -68,9 +67,6 @@ module.exports = (env = {}) => {
         /(express\/lib|any-promise|fastest-validator|typeorm|app-root-path)/,
         'node_modules'
       ),
-      new FilterWarningsPlugin({
-        exclude: [/mongodb/],
-      }),
     ],
   };
 };
