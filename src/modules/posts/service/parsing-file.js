@@ -35,8 +35,7 @@ export async function markdownParser(buffer) {
   );
 
   data.tags = 'tags' in data ? data.tags.split(',') : [];
-  data.content =
-    'content' in data ? data.content.filter((x) => x).join('\n') : '';
+  data.content = 'content' in data ? data.content.join('\n') : '';
   logger.info('Parsed Document: ', data);
   return data;
 }
