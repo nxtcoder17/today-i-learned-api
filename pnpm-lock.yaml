@@ -1,6 +1,7 @@
 dependencies:
   axios: 0.21.1
   babel-polyfill: 6.26.0
+  bcryptjs: 2.4.3
   cookie-parser: 1.4.5
   cors: 2.8.5
   express: 4.17.1
@@ -2117,6 +2118,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
+  /bcryptjs/2.4.3:
+    dev: false
+    resolution:
+      integrity: sha1-mrVie5PmBiH/fNrF2pczAn3x0Ms=
   /better-module-alias/1.1.0:
     dev: true
     engines:
@@ -8489,6 +8494,7 @@ specifiers:
   babel-eslint: ^10.1.0
   babel-loader: ^8.2.2
   babel-polyfill: ^6.26.0
+  bcryptjs: ^2.4.3
   better-module-alias: ^1.1.0
   cookie-parser: ^1.4.5
   cors: ^2.8.5

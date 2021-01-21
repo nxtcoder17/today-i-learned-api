@@ -1,7 +1,8 @@
+import AuthModule from './auth';
 import './db';
 import { PostsModule } from './posts';
 
-const modules = [PostsModule];
+const modules = [AuthModule, PostsModule];
 
 export async function loadModules(expressApp) {
   const p = modules.map(({ init }) => init(expressApp));

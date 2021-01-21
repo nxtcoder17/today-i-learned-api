@@ -1,4 +1,6 @@
+import { cookieMiddleware } from '@commons/handle-cookie-middleware';
 import { httpHandler } from '@commons/http-handler';
+import { authMiddleware } from '@modules/auth/router/middleware';
 import { Router } from 'express';
 import createError from 'http-errors-lite';
 import { StatusCodes } from 'http-status-codes';
@@ -11,6 +13,8 @@ const FILE_KEY = 'blog-post';
 
 tilRouter.post(
   '/upload',
+  cookieMiddleware,
+  authMiddleware.isLoggedIn,
   httpHandler(async (req, res) => {
     const file = req.files[FILE_KEY];
     if (!file) {
@@ -55,6 +59,8 @@ tilRouter.get(
 
 tilRouter.put(
   '/id/:record_id',
+  cookieMiddleware,
+  authMiddleware.isLoggedIn,
   httpHandler(async (req, res) => {
     const { record_id: recordId } = req.params;
     const file = req.files[FILE_KEY];
@@ -69,6 +75,8 @@ tilRouter.put(
 
 tilRouter.delete(
   '/id/:record_id',
+  cookieMiddleware,
+  authMiddleware.isLoggedIn,
   httpHandler(async (req, res) => {
     const { record_id: recordId } = req.params;
     await postsService.deleteRecord(recordId);
