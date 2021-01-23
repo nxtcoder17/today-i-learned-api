@@ -26,7 +26,8 @@ jwtService.genAccessToken = (userId) => {
       { user_id: userId.toString() },
       JWT_SECRET,
       {
-        expiresIn: `${getNumber(JWT_TOKEN_EXPIRES_IN_SEC)}s`,
+        // expiresIn: `${getNumber(JWT_TOKEN_EXPIRES_IN_SEC)}s`,
+        expiresIn: `${JWT_TOKEN_EXPIRES_IN_SEC}s`,
         issuer: 'giiki',
       },
       (err, token) => {
@@ -43,7 +44,8 @@ jwtService.genRefreshToken = (userId) => {
       { user_id: userId.toString() },
       REFRESH_JWT_SECRET,
       {
-        expiresIn: `${getNumber(JWT_REFRESH_TOKEN_EXPIRES_IN_MIN)}m`,
+        // expiresIn: `${getNumber(JWT_REFRESH_TOKEN_EXPIRES_IN_MIN)}m`,
+        expiresIn: `${JWT_REFRESH_TOKEN_EXPIRES_IN_MIN}m`,
         issuer: 'giiki',
       },
       (err, token) => {
