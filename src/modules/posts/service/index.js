@@ -14,10 +14,23 @@ service.addRecord = async (data) => {
   return PostsDBModule.posts.create(data);
 };
 
-service.fetchRecords = async (query = {}) =>
-  PostsDBModule.posts.find(query).sort({ date: -1 });
+service.fetchRecords = async ({ query = {}, page = 1, size = 10 }) => {
+  const results = await PostsDBModule.posts
+    .find(query)
+    .skip((page - 1) * size)
+    .limit(size)
+    .sort({ date: -1 });
 
-service.fetchByTag = async (tag) => PostsDBModule.posts.find({ tags: tag });
+  const meta = {
+    page,
+    size,
+    docs_count: await PostsDBModule.posts.find(query).count(),
+  };
+  return { meta, results };
+};
+
+service.fetchByTag = async ({ tag, page, size }) =>
+  service.fetchRecords({ query: { tags: tag }, page, size });
 
 service.getRecord = async (id) => PostsDBModule.posts.findById(id);
 

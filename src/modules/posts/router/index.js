@@ -33,8 +33,12 @@ tilRouter.post(
 tilRouter.get(
   '/',
   httpHandler(async (req, res) => {
-    const { query } = req.query;
-    const results = await postsService.fetchRecords(query);
+    const { query, page, size } = req.query;
+    const results = await postsService.fetchRecords({
+      query,
+      page: parseInt(page, 10) || 1,
+      size: parseInt(size, 10) || 10,
+    });
     res.send(results);
   })
 );
@@ -43,7 +47,12 @@ tilRouter.get(
   '/tags/:tag',
   httpHandler(async (req, res) => {
     const { tag } = req.params;
-    const results = await postsService.fetchByTag(tag);
+    const { page, size } = req.query;
+    const results = await postsService.fetchByTag({
+      tag,
+      page: parseInt(page, 10) || 1,
+      size: parseInt(size, 10) || 10,
+    });
     res.send(results);
   })
 );
