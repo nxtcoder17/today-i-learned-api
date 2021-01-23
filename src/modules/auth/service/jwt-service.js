@@ -15,19 +15,17 @@ async function refreshTokenPreHook(refreshToken) {
   if (!status) throw new Error('Refresh Token Removed from DB');
 }
 
-const getNumber = (value) =>
-  typeof value === 'number' ? value : parseInt(value, 10);
-
 const jwtService = {};
 
 jwtService.genAccessToken = (userId) => {
+  console.log('ACCESS_TOKEN: ', `${process.env.JWT_TOKEN_EXPIRES_IN_SEC}s`);
   return new Promise((resolve, reject) => {
-    jwt.sign(
+    console.jwt.sign(
       { user_id: userId.toString() },
       JWT_SECRET,
       {
         // expiresIn: `${getNumber(JWT_TOKEN_EXPIRES_IN_SEC)}s`,
-        expiresIn: `${JWT_TOKEN_EXPIRES_IN_SEC}s`,
+        expiresIn: `${process.env.JWT_TOKEN_EXPIRES_IN_SEC}s` || '15s',
         issuer: 'giiki',
       },
       (err, token) => {
@@ -39,13 +37,16 @@ jwtService.genAccessToken = (userId) => {
 };
 
 jwtService.genRefreshToken = (userId) => {
+  console.log(
+    'REFRESH_TOKEN: ',
+    `${process.env.JWT_REFRESH_TOKEN_EXPIRES_IN_MIN}m`
+  );
   return new Promise((resolve, reject) => {
     jwt.sign(
       { user_id: userId.toString() },
       REFRESH_JWT_SECRET,
       {
-        // expiresIn: `${getNumber(JWT_REFRESH_TOKEN_EXPIRES_IN_MIN)}m`,
-        expiresIn: `${JWT_REFRESH_TOKEN_EXPIRES_IN_MIN}m`,
+        expiresIn: `${process.env.JWT_REFRESH_TOKEN_EXPIRES_IN_MIN}m` || '5m',
         issuer: 'giiki',
       },
       (err, token) => {
