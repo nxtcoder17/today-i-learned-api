@@ -14,7 +14,8 @@ service.addRecord = async (data) => {
   return PostsDBModule.posts.create(data);
 };
 
-service.fetchRecords = async (query = {}) => PostsDBModule.posts.find(query);
+service.fetchRecords = async (query = {}) =>
+  PostsDBModule.posts.find(query).sort({ date: -1 });
 
 service.fetchByTag = async (tag) => PostsDBModule.posts.find({ tags: tag });
 
