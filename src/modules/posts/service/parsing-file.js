@@ -22,8 +22,11 @@ export async function markdownParser(buffer) {
         }
       }
       if (indexStart != null && i > indexStart && (!indexEnd || i < indexEnd)) {
-        const [key, value] = lines[i].split(':', 2);
+        const splits = lines[i].split(':');
+        const key = splits[0];
+        const value = splits.slice(1).join(':');
         temp[key] = value.trim();
+        console.log(key, value);
       }
 
       if (indexEnd && i > indexEnd) {
